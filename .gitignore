@@ -135,3 +135,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Mac rubbish
+.DS_Store
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
