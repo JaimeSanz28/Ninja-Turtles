@@ -4,4 +4,4 @@
 
 **<p align="center">What Does The Frog Say?🐸</p>**
 
-<p align="center"><img  src="https://i.pinimg.com/originals/11/31/f6/1131f68a5bd344e97dea0b89be0de6d2.jpg" width="650" height="500"></p>
+<p align="center"><img  src="https://i.pinimg.com/originals/11/31/f6/1131f68a5bd344e97dea0b89be0de6d2.jpg" width="700" height="400"></p>
