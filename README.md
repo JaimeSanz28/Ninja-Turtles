@@ -11,7 +11,7 @@
 
 ## Description 📜
 
-Have you ever heard of Shazam? This is about the same thing but with frogs, frogs of all kinds of shapes, colors, features, skills and *poisons*.
+Have you ever heard of **Shazam**? Well..., this is about the same thing but with frogs, frogs of all kinds of shapes, colors, features, skills and *poisons*.
 
 Sound recognition of 5 different *familia* of frogs and toads present throughout the globe.
 
@@ -33,6 +33,11 @@ una cucharada de ML con una red neural bien guapa
 ## API 🧩
 
 y finalmente una API que te diga cual es tu ranita de colores
+
+
+## Geolocation 🌎
+
+100ml de Folium para localizar las ranitas en el globoooooooo
 
 
 ## Documentation 💭
