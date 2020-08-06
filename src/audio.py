@@ -1,20 +1,24 @@
-import os, sys
-import re
 from pydub import AudioSegment
-from scipy.fftpack import fft
-from pydub.utils import make_chunks
+import pandas as pd
 import numpy as np
+import os
+from scipy.fftpack import fft
+import json
+from tensorflow.keras.models import model_from_json
+from keras.models import load_model
+from pydub.utils import make_chunks
+import requests
 
-def audSegFouTrDF(path):
+def generateDataframe(path):
     croak = AudioSegment.from_file(path, format='mp3')
-    croak = croak.set_fram_rate(16000)
+    croak = croak.set_frame_rate(16000)
     output_path = "output/"
     file_name = "recording.mp3"
     complete_path = output_path+file_name
     croak.export(complete_path, format='mp3')
     
     audioarray = []
-    for outputs in os.listdir(output_path):
+    for _ in os.listdir(output_path):
         aud = AudioSegment.from_file(complete_path, format="mp3")
         arr = aud.get_array_of_samples()[:5120]
         abs_four = np.abs(fft(arr))
@@ -23,18 +27,16 @@ def audSegFouTrDF(path):
     df_clean = pd.DataFrame({'F.Transform':audioarray})
     return df_clean
 
-def neuralNetworkPred(transDf):
-    trained_model = ("0.9034-accuracy-20batch_size-50epochs-loss1.0390")
+model_p = os.path.join(os.getcwd(),"models","0.9034-accuracy-20batch_size-50epochs-loss1.0390.h5")
+
+def runModel(transDf):
+    trained_model = load_model(model_p)
     print("Loading neural network")
-    with open(f'output/{trained_model}.json','r') as f:
-        model_json = json.load(f)
-        model = model_from_json(model_json)
-        model.load(f"output/{trained_model}.h5")
-    
+  
     print("Predicting your cute lil frog's familia")
     X_test=np.vstack(transDf['F.Transform'])
     X_test.shape
-    pred = model.predict(X_test)
+    pred = trained_model.predict(X_test)
     frog = pred[0].tolist()
     
     print("Evaluating the results")
