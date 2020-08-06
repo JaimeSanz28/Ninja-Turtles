@@ -7,5 +7,5 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 RUN apt-get update && apt-get install -y ffmpeg 
 
-CMD ["python3","frog.py"]
+CMD ["python3","api.py"]
 
